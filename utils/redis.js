@@ -4,8 +4,7 @@ import { promisify } from 'util';
 class RedisClient {
   constructor() {
     this.client = createClient();
-    this.client.on('error', err => console.log(err));
-	  
+    this.client.on('error', (err) => console.log(err));
     this.asyncGet = promisify(this.client.get).bind(this.client);
     this.asyncSetExp = promisify(this.client.set).bind(this.client);
     this.asyncDel = promisify(this.client.del).bind(this.client);
